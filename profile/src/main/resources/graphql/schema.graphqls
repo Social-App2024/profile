@@ -1,0 +1,18 @@
+scalar Long
+
+type Query {
+    profileById(userId: Long): Profile
+}
+
+type Profile {
+    userId: Long
+    name: String
+    username: String
+    password: String
+    country: String
+    city: String
+    birthday: String
+    nfollowers: Int
+    nfollowing: Int
+}
+

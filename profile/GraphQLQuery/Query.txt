@@ -1,0 +1,13 @@
+query profileDetails {
+  profileById(userId: 2) {
+    userId
+    name
+    username
+    password
+    country
+    city
+    birthday
+    nfollowers
+    nfollowing
+   }
+}
