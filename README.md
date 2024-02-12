@@ -16,5 +16,6 @@ The microservice is developed in Spring Boot, GraphQL and mongo DB.
 
 To run the microservice:
 - Install JDK 17
+- Create a blank DB in mongo, name it "social"
 - Open the project from IDE (Intellij or Eclipse STS)
 - run the project, and access the APIs from above urls
