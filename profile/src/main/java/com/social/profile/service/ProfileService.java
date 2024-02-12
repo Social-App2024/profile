@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for handling API logic
+ */
 @Service
 public class ProfileService {
     @Autowired

@@ -9,6 +9,9 @@ import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The main class for receiving GraphQL API calls
+ */
 @RestController
 @CrossOrigin
 public class ProfileGraphQLController {

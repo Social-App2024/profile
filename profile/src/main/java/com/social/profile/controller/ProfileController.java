@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The main class for receiving Rest API calls
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/profile")
