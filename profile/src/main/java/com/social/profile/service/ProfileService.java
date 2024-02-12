@@ -28,6 +28,13 @@ public class ProfileService {
     ProfileRepo repo;
     @Autowired
     ProfileSequenceGenerator generator;
+
+    /**
+     * Find details about the first 50 of the Following List (Username, userid)
+     * @param following list of following userids of a specific profile
+     * @param offset internally used for scrolling, start at -1
+     * @return
+     */
     public List<Follower> findFollowing(List<Long> following, int offset) {
         Window<Profile> users=null;
         List<Follower> followingList=new ArrayList<>();
@@ -53,6 +60,12 @@ public class ProfileService {
         return repo.save(profile);
     }
 
+    /**
+     * Find details about the first 50 followers of a userid
+     * @param userId
+     * @param offset internally used for scrolling
+     * @return
+     */
     public List<Follower> findFollowers(Long userId, int offset) {
         Window<Profile> users=null;
         List<Follower> followers=new ArrayList<>();
