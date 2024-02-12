@@ -16,18 +16,33 @@ public class ProfileGraphQLController {
     @Autowired
     ProfileService service;
 
+    /**
+     * Get profile details, including no. of following and no. of followers
+     * @param userId
+     * @return
+     */
     @QueryMapping
     public Profile profileById(@Argument long userId)
     {
         return service.findProfileById(userId);
     }
 
+    /**
+     * Used by above method to get the no. of followers
+     * @param profile
+     * @return
+     */
     @SchemaMapping
     public int nfollowers(Profile profile)
     {
         return service.countFollowers(profile.getUserId());
     }
 
+    /**
+     * Internally used to get the no. of following
+     * @param profile
+     * @return
+     */
     @SchemaMapping
     public int nfollowing(Profile profile)
     {
