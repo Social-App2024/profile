@@ -3,6 +3,14 @@ package com.social.profile.service;
 import com.social.profile.dto.Follower;
 import com.social.profile.entity.Profile;
 import com.social.profile.repo.ProfileRepo;
+import org.springframework.amqp.core.AmqpAdmin;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.core.Message;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.core.RabbitAdmin;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.OffsetScrollPosition;
 import org.springframework.data.domain.ScrollPosition;
@@ -101,7 +109,26 @@ public class ProfileService {
             }
             following.add(followId);
             profile.setFollowing(following);
-            return repo.save(profile);
+            profile=repo.save(profile);
+            //send notification
+//            RabbitTemplate template = new RabbitTemplate(); // using default no-name Exchange
+//            template.setRoutingKey("queue.helloWorld"); // but we'll always send to this Queue
+//            template.send(new Message("Hello World".getBytes()));
+            //send notification 2
+            ConnectionFactory connectionFactory = new CachingConnectionFactory();
+            AmqpAdmin admin = new RabbitAdmin(connectionFactory);
+            admin.declareQueue(new Queue("follow"));
+            AmqpTemplate template = new RabbitTemplate(connectionFactory);
+            template.convertAndSend("follow", mapProfileToFollower(repo.findByUserId(followId).get()));
+            //String foo = (String) template.receiveAndConvert("myqueue");
+            return profile;
         }
+    }
+
+    private Follower mapProfileToFollower(Profile profile)
+    {
+        if(profile==null)
+            return null;
+        return new Follower(profile.getUserId(),profile.getName());
     }
 }
