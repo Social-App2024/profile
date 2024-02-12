@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "b1cae787-3299-4459-9db7-257e147bce5f",
+		"name": "Profiles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6404691",
+		"_collection_link": "https://interstellar-star-854854.postman.co/workspace/Asset~d62fb95c-c187-46fa-a37c-982a9ef7c273/collection/6404691-b1cae787-3299-4459-9db7-257e147bce5f?action=share&source=collection_link&creator=6404691"
+	},
+	"item": [
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Ola ahmed\",\r\n    \"username\":\"olahmed\",\r\n    \"password\":\"123\",\r\n    \"country\":\"Egypt\",\r\n    \"birthday\":\"1974-08-19\"\r\n    //\"following\":[1,2]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/profile/profile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"profile",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "following",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,3]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/profile/following/-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"profile",
+						"following",
+						"-1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "suggestion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,4]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/profile/suggest/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"profile",
+						"suggest",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "followers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9094/profile/followers/-1?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"profile",
+						"followers",
+						"-1"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GraphQL_getProfile",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query profileDetails {\r\n  profileById(userId: 1) {\r\n    userId\r\n    name\r\n    username\r\n    password\r\n    country\r\n    city\r\n    birthday\r\n    nfollowers\r\n    nfollowing\r\n   }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Follow a user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9094/profile/follow/1?profileId=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9094",
+					"path": [
+						"profile",
+						"follow",
+						"1"
+					],
+					"query": [
+						{
+							"key": "profileId",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
