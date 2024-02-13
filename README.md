@@ -2,15 +2,15 @@
  
 Profile microservice, responsible for handling Thaqafa profiles, including following APIs:
 - Creating new Profile
-  POST - (http://localhost:9094/profile/profile)
+  (POST - http://localhost:9094/profile/profile)
 - Find details about the Following List (Username, userid)
-  POST - (http://localhost:9094/profile/following/{offset}), offset default: -1
+  (POST - http://localhost:9094/profile/following/{offset}), offset default: -1
 - Find details about the Followers List (Username, userid)
-  GET - (http://localhost:9094/profile/followers/-1?userId=1)
+  (GET - http://localhost:9094/profile/followers/-1?userId=1)
 - Get Profile Details
-  POST - (http://localhost:9094/graphql)
+  (POST - http://localhost:9094/graphql)
 - Follow a user
-  GET - (http://localhost:9094/profile/follow/{userid-to-follow}?profileId={follower-id})
+  (GET - http://localhost:9094/profile/follow/{userid-to-follow}?profileId={follower-id})
 
 Complete APIs calls in the file: Profiles.postman_collection.json
 The microservice is developed in Spring Boot, GraphQL and mongo DB.
